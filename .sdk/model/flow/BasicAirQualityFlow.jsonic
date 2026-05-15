@@ -1,0 +1,28 @@
+# BasicAirQualityFlow
+
+main: kit: flow: BasicAirQualityFlow:
+{
+  entity: "air_quality",
+  kind: "basic",
+  name: "BasicAirQualityFlow",
+  step: [
+    {
+      input: {
+        ref: "air_quality_ref01",
+        srcdatavar: "air_quality_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-air_quality_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAirQualityFlow"
+}

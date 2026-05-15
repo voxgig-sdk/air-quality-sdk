@@ -1,0 +1,32 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Open-Meteo"
+        url: "https://open-meteo.com"
+      }
+      description: "Pollutants and pollen forecast in 11 km resolution. Provides air quality forecasts including particulate matter, gases, pollen counts, and air quality indices for locations worldwide."
+      license: {
+        name: "Attribution 4.0 International (CC BY 4.0)"
+        url: "https://creativecommons.org/licenses/by/4.0/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://air-quality-api.open-meteo.com"
+        }
+        {
+          description: "Commercial customer server (requires API key)"
+          url: "https://customer-air-quality-api.open-meteo.com"
+        }
+      ]
+      title: "Air Quality API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,493 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Air Quality API",
+    "description": "Pollutants and pollen forecast in 11 km resolution. Provides air quality forecasts including particulate matter, gases, pollen counts, and air quality indices for locations worldwide.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Open-Meteo",
+      "url": "https://open-meteo.com"
+    },
+    "license": {
+      "name": "Attribution 4.0 International (CC BY 4.0)",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://air-quality-api.open-meteo.com",
+      "description": "Production server"
+    },
+    {
+      "url": "https://customer-air-quality-api.open-meteo.com",
+      "description": "Commercial customer server (requires API key)"
+    }
+  ],
+  "paths": {
+    "/v1/air-quality": {
+      "get": {
+        "summary": "Get air quality forecast",
+        "description": "Returns hourly air quality forecast data for a specified location including pollutants, pollen counts, and air quality indices.",
+        "operationId": "getAirQuality",
+        "tags": [
+          "Air Quality"
+        ],
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "Latitude in decimal degrees (WGS84). Multiple coordinates can be comma separated.",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "format": "float",
+                  "minimum": -90,
+                  "maximum": 90
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?\\d+(\\.\\d+)?(,-?\\d+(\\.\\d+)?)*$"
+                }
+              ]
+            },
+            "example": 52.52
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "Longitude in decimal degrees (WGS84). Multiple coordinates can be comma separated.",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "format": "float",
+                  "minimum": -180,
+                  "maximum": 180
+                },
+                {
+                  "type": "string",
+                  "pattern": "^-?\\d+(\\.\\d+)?(,-?\\d+(\\.\\d+)?)*$"
+                }
+              ]
+            },
+            "example": 13.419
+          },
+          {
+            "name": "hourly",
+            "in": "query",
+            "description": "List of hourly weather variables to return. Multiple variables can be comma separated or specified with multiple parameters.",
+            "required": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "pm10",
+                      "pm2_5",
+                      "carbon_monoxide",
+                      "carbon_dioxide",
+                      "nitrogen_dioxide",
+                      "sulphur_dioxide",
+                      "ozone",
+                      "aerosol_optical_depth",
+                      "dust",
+                      "uv_index",
+                      "uv_index_clear_sky",
+                      "ammonia",
+                      "methane",
+                      "alder_pollen",
+                      "birch_pollen",
+                      "grass_pollen",
+                      "mugwort_pollen",
+                      "olive_pollen",
+                      "ragweed_pollen",
+                      "european_aqi",
+                      "european_aqi_pm2_5",
+                      "european_aqi_pm10",
+                      "european_aqi_nitrogen_dioxide",
+                      "european_aqi_ozone",
+                      "european_aqi_sulphur_dioxide",
+                      "us_aqi",
+                      "us_aqi_pm2_5",
+                      "us_aqi_pm10",
+                      "us_aqi_nitrogen_dioxide",
+                      "us_aqi_ozone",
+                      "us_aqi_sulphur_dioxide",
+                      "us_aqi_carbon_monoxide"
+                    ]
+                  }
+                }
+              ]
+            },
+            "example": "pm10,pm2_5,european_aqi"
+          },
+          {
+            "name": "current",
+            "in": "query",
+            "description": "List of variables to get current conditions. Same variables as hourly are available.",
+            "required": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "example": "european_aqi,pm10,pm2_5"
+          },
+          {
+            "name": "domains",
+            "in": "query",
+            "description": "Select the forecast domain: auto (combines both), cams_europe (European domain), or cams_global (global domain)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "cams_europe",
+                "cams_global"
+              ],
+              "default": "auto"
+            }
+          },
+          {
+            "name": "timeformat",
+            "in": "query",
+            "description": "Time format for returned timestamps",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "iso8601",
+                "unixtime"
+              ],
+              "default": "iso8601"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "Timezone for returned timestamps. Use 'auto' to automatically detect from coordinates, 'GMT' for GMT+0, or any timezone from the timezone database.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "GMT"
+            },
+            "example": "Europe/Berlin"
+          },
+          {
+            "name": "past_days",
+            "in": "query",
+            "description": "Number of past days to include (0-92)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 92,
+              "default": 0
+            }
+          },
+          {
+            "name": "forecast_days",
+            "in": "query",
+            "description": "Number of forecast days to return (0-7)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 7,
+              "default": 5
+            }
+          },
+          {
+            "name": "forecast_hours",
+            "in": "query",
+            "description": "Number of forecast hours to return (alternative to forecast_days)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "past_hours",
+            "in": "query",
+            "description": "Number of past hours to include",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "Start date for the time interval (ISO8601 format: yyyy-mm-dd)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-01"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "End date for the time interval (ISO8601 format: yyyy-mm-dd)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2024-01-07"
+          },
+          {
+            "name": "start_hour",
+            "in": "query",
+            "description": "Start time for hourly data (ISO8601 format: yyyy-mm-ddThh:mm)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2024-01-01T00:00"
+          },
+          {
+            "name": "end_hour",
+            "in": "query",
+            "description": "End time for hourly data (ISO8601 format: yyyy-mm-ddThh:mm)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2024-01-07T23:00"
+          },
+          {
+            "name": "cell_selection",
+            "in": "query",
+            "description": "Grid cell selection preference: land (suitable land cell with similar elevation), sea (prefer sea cells), nearest (closest cell)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "land",
+                "sea",
+                "nearest"
+              ],
+              "default": "nearest"
+            }
+          },
+          {
+            "name": "apikey",
+            "in": "query",
+            "description": "API key for commercial use to access reserved resources",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with air quality forecast data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirQualityResponse"
+                },
+                "example": {
+                  "latitude": 52.52,
+                  "longitude": 13.419,
+                  "elevation": 44.812,
+                  "generationtime_ms": 2.2119,
+                  "utc_offset_seconds": 0,
+                  "timezone": "Europe/Berlin",
+                  "timezone_abbreviation": "CEST",
+                  "hourly": {
+                    "time": [
+                      "2022-07-01T00:00",
+                      "2022-07-01T01:00",
+                      "2022-07-01T02:00"
+                    ],
+                    "pm10": [
+                      1,
+                      1.7,
+                      1.7
+                    ],
+                    "pm2_5": [
+                      0.5,
+                      0.8,
+                      0.9
+                    ],
+                    "european_aqi": [
+                      15,
+                      18,
+                      20
+                    ]
+                  },
+                  "hourly_units": {
+                    "time": "iso8601",
+                    "pm10": "μg/m³",
+                    "pm2_5": "μg/m³",
+                    "european_aqi": "European AQI"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": true,
+                  "reason": "Cannot initialize WeatherVariable from invalid String value"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AirQualityResponse": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "float",
+            "description": "WGS84 latitude of the center of the weather grid-cell used for the forecast"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "float",
+            "description": "WGS84 longitude of the center of the weather grid-cell used for the forecast"
+          },
+          "elevation": {
+            "type": "number",
+            "format": "float",
+            "description": "Elevation in meters of the selected grid cell"
+          },
+          "generationtime_ms": {
+            "type": "number",
+            "format": "float",
+            "description": "Generation time of the forecast in milliseconds"
+          },
+          "utc_offset_seconds": {
+            "type": "integer",
+            "description": "Applied timezone offset in seconds"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "Timezone identifier (e.g., Europe/Berlin)"
+          },
+          "timezone_abbreviation": {
+            "type": "string",
+            "description": "Timezone abbreviation (e.g., CEST)"
+          },
+          "current": {
+            "type": "object",
+            "description": "Current conditions data",
+            "additionalProperties": true
+          },
+          "current_units": {
+            "type": "object",
+            "description": "Units for current conditions variables",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "hourly": {
+            "type": "object",
+            "description": "Hourly forecast data",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "description": "Array of ISO8601 timestamps"
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "hourly_units": {
+            "type": "object",
+            "description": "Units for each hourly variable",
+            "properties": {
+              "time": {
+                "type": "string",
+                "example": "iso8601"
+              }
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error",
+          "reason"
+        ],
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "description": "Indicates an error occurred",
+            "example": true
+          },
+          "reason": {
+            "type": "string",
+            "description": "Human-readable error message explaining what went wrong"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "apikey",
+        "description": "API key for commercial customers"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Air Quality",
+      "description": "Air quality forecast endpoints providing pollutant levels, pollen counts, and air quality indices"
+    }
+  ],
+  "externalDocs": {
+    "description": "Full API Documentation",
+    "url": "https://open-meteo.com/en/docs/air-quality-api"
+  }
+}
