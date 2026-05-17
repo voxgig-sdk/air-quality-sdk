@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/air-quality-sdk"
-	"github.com/voxgig-sdk/air-quality-sdk/core"
+	sdk "github.com/voxgig-sdk/air-quality-sdk/go"
+	"github.com/voxgig-sdk/air-quality-sdk/go/core"
 )
 
 func TestAirQualityDirect(t *testing.T) {

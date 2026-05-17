@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/air-quality-sdk/core"
+	"github.com/voxgig-sdk/air-quality-sdk/go/core"
 )
 
 type BaseFeature struct {
