@@ -106,14 +106,12 @@ func air_qualityDirectSetup(mockres any) *air_qualityDirectSetupResult {
 	env := envOverride(map[string]any{
 		"AIRQUALITY_TEST_AIR_QUALITY_ENTID": map[string]any{},
 		"AIRQUALITY_TEST_LIVE":    "FALSE",
-		"AIRQUALITY_APIKEY":       "NONE",
 	})
 
 	live := env["AIRQUALITY_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["AIRQUALITY_APIKEY"],
 		}
 		client := sdk.NewAirQualitySDK(mergedOpts)
 

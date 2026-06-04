@@ -85,7 +85,6 @@ function air_quality_basic_setup($extra)
         "AIRQUALITY_TEST_AIR_QUALITY_ENTID" => $idmap,
         "AIRQUALITY_TEST_LIVE" => "FALSE",
         "AIRQUALITY_TEST_EXPLAIN" => "FALSE",
-        "AIRQUALITY_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function air_quality_basic_setup($extra)
     if ($env["AIRQUALITY_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["AIRQUALITY_APIKEY"],
             ],
             $extra ?? [],
         ]);

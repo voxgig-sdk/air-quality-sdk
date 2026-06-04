@@ -15,9 +15,6 @@ module AirQualityConfig
       },
       "options" => {
         "base" => "https://air-quality-api.open-meteo.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

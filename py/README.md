@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from airquality_sdk import AirQualitySDK
 
-client = AirQualitySDK({
-    "apikey": os.environ.get("AIR-QUALITY_APIKEY"),
-})
+client = AirQualitySDK({})
 ```
 
 ### 3. Load a airquality
@@ -117,7 +114,6 @@ Create a `.env.local` file at the project root:
 
 ```
 AIR-QUALITY_TEST_LIVE=TRUE
-AIR-QUALITY_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,7 +137,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

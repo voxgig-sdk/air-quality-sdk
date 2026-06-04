@@ -25,7 +25,17 @@
           }
         ],
         "title": "Air Quality API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Hourly pollutant and pollen forecasts at 11 km resolution, worldwide",
+        "homepage": "https://open-meteo.com/en/docs/air-quality-api",
+        "docs_url": "https://open-meteo.com/en/docs/air-quality-api",
+        "license_short": "Creative Commons Attribution 4.0 International (CC BY 4.0); attribute Open-Meteo and the CAMS data provider.",
+        "license_md": "- Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\n- Attribution required: credit Open-Meteo and the underlying CAMS ENSEMBLE data provider.\n- Free for non-commercial use; commercial use requires an Open-Meteo API key.\n- Source data: Copernicus Atmosphere Monitoring Service (CAMS).",
+        "about_md": "The [Air Quality API](https://open-meteo.com/en/docs/air-quality-api) is run by [Open-Meteo](https://open-meteo.com), an open-source weather and environmental data project. It serves hourly air-quality forecasts derived from the 11 km CAMS European air quality model and the 45 km CAMS global atmospheric composition forecast.\n\nWhat you get from the API:\n\n- Pollutant concentrations: PM10, PM2.5, CO, CO₂, NO₂, SO₂, O₃, dust, aerosol optical depth, ammonia, methane (μg/m³, ppm for CO₂).\n- Pollen counts (Europe only): alder, birch, grass, mugwort, olive, ragweed (grains/m³).\n- European AQI (0–100+) and US AQI (0–500) indices.\n- Forecasts up to 7 days ahead and up to 92 days of past data, by latitude/longitude.\n- Responses in JSON, CSV, or XLSX with selectable IANA timezone.\n\nThe single endpoint is `GET /v1/air-quality`. No API key is needed for non-commercial use; commercial customers use a key plus a customer-prefixed server URL. CAMS European data is updated every 24 hours, CAMS global every 12 hours.",
+        "entity_desc": {
+          "air_quality": "Hourly and current pollutant, pollen, and AQI forecasts for a given location, served from `GET /v1/air-quality`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -33,7 +43,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "air_quality": {

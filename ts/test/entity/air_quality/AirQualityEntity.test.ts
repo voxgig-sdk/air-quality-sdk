@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'AIR_QUALITY_TEST_AIR_QUALITY_ENTID': idmap,
     'AIR_QUALITY_TEST_LIVE': 'FALSE',
     'AIR_QUALITY_TEST_EXPLAIN': 'FALSE',
-    'AIR_QUALITY_APIKEY': 'NONE',
   })
 
   idmap = env['AIR_QUALITY_TEST_AIR_QUALITY_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AirQualitySDK(merge([
       {
-        apikey: env.AIR_QUALITY_APIKEY,
       },
       extra
     ]))
