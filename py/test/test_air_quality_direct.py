@@ -65,12 +65,14 @@ def _air_quality_direct_setup(mockres):
     env = runner.env_override({
         "AIRQUALITY_TEST_AIR_QUALITY_ENTID": {},
         "AIRQUALITY_TEST_LIVE": "FALSE",
+        "AIRQUALITY_APIKEY": "NONE",
     })
 
     live = env.get("AIRQUALITY_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("AIRQUALITY_APIKEY"),
         }
         client = AirQualitySDK(merged_opts)
         return {

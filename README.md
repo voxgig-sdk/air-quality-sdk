@@ -1,22 +1,8 @@
 # AirQuality SDK
 
-Hourly pollutant and pollen forecasts at 11 km resolution, worldwide
+Air Quality API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Air Quality API
-
-The [Air Quality API](https://open-meteo.com/en/docs/air-quality-api) is run by [Open-Meteo](https://open-meteo.com), an open-source weather and environmental data project. It serves hourly air-quality forecasts derived from the 11 km CAMS European air quality model and the 45 km CAMS global atmospheric composition forecast.
-
-What you get from the API:
-
-- Pollutant concentrations: PM10, PM2.5, CO, CO₂, NO₂, SO₂, O₃, dust, aerosol optical depth, ammonia, methane (μg/m³, ppm for CO₂).
-- Pollen counts (Europe only): alder, birch, grass, mugwort, olive, ragweed (grains/m³).
-- European AQI (0–100+) and US AQI (0–500) indices.
-- Forecasts up to 7 days ahead and up to 92 days of past data, by latitude/longitude.
-- Responses in JSON, CSV, or XLSX with selectable IANA timezone.
-
-The single endpoint is `GET /v1/air-quality`. No API key is needed for non-commercial use; commercial customers use a key plus a customer-prefixed server URL. CAMS European data is updated every 24 hours, CAMS global every 12 hours.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install air-quality-sdk
 luarocks install air-quality-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { AirQualitySDK } from 'air-quality'
 
-const client = new AirQualitySDK({})
+const client = new AirQualitySDK({
+  apikey: process.env.AIR-QUALITY_APIKEY,
+})
 
+// Load airquality data
+const airquality = await client.AirQuality().load({})
+console.log(airquality.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **AirQuality** | Hourly and current pollutant, pollen, and AQI forecasts for a given location, served from `GET /v1/air-quality`. | `/v1/air-quality` |
+| **AirQuality** |  | `/v1/air-quality` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from airquality_sdk import AirQualitySDK
 
-client = AirQualitySDK({})
+client = AirQualitySDK({
+    "apikey": os.environ.get("AIR-QUALITY_APIKEY"),
+})
 
 
 # Load a specific airquality
-airquality, err = client.AirQuality(None).load(
-    {"id": "example_id"}, None
-)
+airquality, err = client.AirQuality().load({"id": "example_id"})
+print(airquality)
 ```
 
 ### PHP
@@ -127,13 +119,14 @@ airquality, err = client.AirQuality(None).load(
 <?php
 require_once 'airquality_sdk.php';
 
-$client = new AirQualitySDK([]);
+$client = new AirQualitySDK([
+    "apikey" => getenv("AIR-QUALITY_APIKEY"),
+]);
 
 
 // Load a specific airquality
-[$airquality, $err] = $client->AirQuality(null)->load(
-    ["id" => "example_id"], null
-);
+[$airquality, $err] = $client->AirQuality()->load(["id" => "example_id"]);
+print_r($airquality);
 ```
 
 ### Golang
@@ -141,8 +134,13 @@ $client = new AirQualitySDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/air-quality-sdk/go"
 
-client := sdk.NewAirQualitySDK(map[string]any{})
+client := sdk.NewAirQualitySDK(map[string]any{
+    "apikey": os.Getenv("AIR-QUALITY_APIKEY"),
+})
 
+// Load airquality data
+airquality, err := client.AirQuality(nil).Load(map[string]any{}, nil)
+fmt.Println(airquality)
 ```
 
 ### Ruby
@@ -150,13 +148,14 @@ client := sdk.NewAirQualitySDK(map[string]any{})
 ```ruby
 require_relative "AirQuality_sdk"
 
-client = AirQualitySDK.new({})
+client = AirQualitySDK.new({
+  "apikey" => ENV["AIR-QUALITY_APIKEY"],
+})
 
 
 # Load a specific airquality
-airquality, err = client.AirQuality(nil).load(
-  { "id" => "example_id" }, nil
-)
+airquality, err = client.AirQuality().load({ "id" => "example_id" })
+puts airquality
 ```
 
 ### Lua
@@ -164,13 +163,14 @@ airquality, err = client.AirQuality(nil).load(
 ```lua
 local sdk = require("air-quality_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("AIR-QUALITY_APIKEY"),
+})
 
 
 -- Load a specific airquality
-local airquality, err = client:AirQuality(nil):load(
-  { id = "example_id" }, nil
-)
+local airquality, err = client:AirQuality():load({ id = "example_id" })
+print(airquality)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +189,21 @@ const result = await client.AirQuality().load({ id: 'test01' })
 ### Python
 
 ```python
-client = AirQualitySDK.test(None, None)
-result, err = client.AirQuality(None).load(
-    {"id": "test01"}, None
-)
+client = AirQualitySDK.test()
+result, err = client.AirQuality().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = AirQualitySDK::test(null, null);
-[$result, $err] = $client->AirQuality(null)->load(
-    ["id" => "test01"], null
-);
+$client = AirQualitySDK::test();
+[$result, $err] = $client->AirQuality()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.AirQuality(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +212,15 @@ result, err := client.AirQuality(nil).Load(
 ### Ruby
 
 ```ruby
-client = AirQualitySDK.test(nil, nil)
-result, err = client.AirQuality(nil).load(
-  { "id" => "test01" }, nil
-)
+client = AirQualitySDK.test
+result, err = client.AirQuality().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:AirQuality(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:AirQuality():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Air Quality API
-
-- Upstream: [https://open-meteo.com/en/docs/air-quality-api](https://open-meteo.com/en/docs/air-quality-api)
-
-- Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-- Attribution required: credit Open-Meteo and the underlying CAMS ENSEMBLE data provider.
-- Free for non-commercial use; commercial use requires an Open-Meteo API key.
-- Source data: Copernicus Atmosphere Monitoring Service (CAMS).
 
 ---
 

@@ -91,6 +91,7 @@ def _air_quality_basic_setup(extra):
         "AIRQUALITY_TEST_AIR_QUALITY_ENTID": idmap,
         "AIRQUALITY_TEST_LIVE": "FALSE",
         "AIRQUALITY_TEST_EXPLAIN": "FALSE",
+        "AIRQUALITY_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _air_quality_basic_setup(extra):
     if env.get("AIRQUALITY_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("AIRQUALITY_APIKEY"),
             },
             extra or {},
         ])
