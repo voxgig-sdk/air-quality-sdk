@@ -2,9 +2,17 @@ Gem::Specification.new do |spec|
   spec.name          = "voxgig-sdk-air-quality"
   spec.version       = "0.0.1"
   spec.authors       = ["Voxgig"]
-  spec.summary       = "AirQuality SDK for Ruby"
+  spec.summary       = "Unofficial generated Ruby SDK for the Air Quality public API. Not affiliated with or endorsed by the upstream API provider."
+  spec.description   = "Unofficial generated Ruby SDK for the Air Quality public API. Not affiliated with or endorsed by the upstream API provider."
   spec.license       = "MIT"
   spec.homepage      = "https://github.com/voxgig-sdk/air-quality-sdk"
+  spec.metadata      = {
+    "homepage_uri"          => "https://github.com/voxgig-sdk/air-quality-sdk",
+    "source_code_uri"       => "https://github.com/voxgig-sdk/air-quality-sdk",
+    "bug_tracker_uri"       => "https://github.com/voxgig-sdk/air-quality-sdk/issues",
+    "changelog_uri"         => "https://github.com/voxgig-sdk/air-quality-sdk/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files         = Dir["lib/**/*.rb", "*.rb"]
   spec.require_paths = ["."]

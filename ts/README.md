@@ -10,7 +10,7 @@ The TypeScript SDK for the AirQuality API — a type-safe, entity-oriented clien
 
 ## Install
 ```bash
-npm install air-quality
+npm install @voxgig-sdk/air-quality
 ```
 ## Tutorial: your first API call
 

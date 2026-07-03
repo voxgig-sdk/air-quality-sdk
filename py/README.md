@@ -10,7 +10,7 @@ The Python SDK for the AirQuality API — an entity-oriented client following Py
 
 ## Install
 ```bash
-pip install air-quality-sdk
+pip install voxgig-sdk-air-quality
 ```
 
 Or install from source:

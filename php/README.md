@@ -10,7 +10,7 @@ The PHP SDK for the AirQuality API — an entity-oriented client using PHP conve
 
 ## Install
 ```bash
-composer require voxgig/air-quality-sdk
+composer require voxgig-sdk/air-quality
 ```
 
 

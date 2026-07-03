@@ -10,13 +10,13 @@ The Ruby SDK for the AirQuality API — an entity-oriented client using idiomati
 
 ## Install
 ```bash
-gem install air-quality-sdk
+gem install voxgig-sdk-air-quality
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "air-quality-sdk"
+gem "voxgig-sdk-air-quality"
 ```
 
 Then run:
