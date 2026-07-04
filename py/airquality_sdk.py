@@ -220,25 +220,15 @@ class AirQualitySDK:
         }
 
 
-    @property
-    def air_quality(self):
-        """Idiomatic facade: client.air_quality.list() / client.air_quality.load({"id": ...})."""
-        from entity.air_quality_entity import AirQualityEntity
-        cached = getattr(self, "_air_quality", None)
-        if cached is None:
-            cached = AirQualityEntity(self, None)
-            self._air_quality = cached
-        return cached
-
-    def AirQuality(self, data=None):
-        # Deprecated: use client.air_quality instead.
+    def AirQuality(self, data=None) -> "AirQualityEntity":
+        """Entity factory: client.AirQuality().list({}) / client.AirQuality().load({"id": ...})."""
         from entity.air_quality_entity import AirQualityEntity
         return AirQualityEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AirQualitySDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class AirQualitySDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.air_quality_entity import AirQualityEntity

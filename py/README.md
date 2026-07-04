@@ -36,10 +36,12 @@ client = AirQualitySDK({
 
 ### 3. Load an airquality
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.airquality.load({"id": "example_id"})
-    print(result)
+    airquality = client.AirQuality().load({"id": "example_id"})
+    print(airquality)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AirQualitySDK.test()
 
-result = client.airquality.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+airquality = client.AirQuality().load({"id": "test01"})
+# airquality contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -166,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `AirQuality` | `(data) -> AirQualityEntity` | Create a AirQuality entity instance. |
+| `AirQuality` | `(data) -> AirQualityEntity` | Create an AirQuality entity instance. |
 
 ### Entity interface
 
@@ -233,7 +236,7 @@ API path: `/v1/air-quality`
 
 ### AirQuality
 
-Create an instance: `const air_quality = client.air_quality`
+Create an instance: `air_quality = client.AirQuality()`
 
 #### Operations
 
@@ -259,8 +262,8 @@ Create an instance: `const air_quality = client.air_quality`
 
 #### Example: Load
 
-```ts
-const air_quality = await client.air_quality.load({ id: 'air_quality_id' })
+```python
+air_quality = client.AirQuality().load({"id": "air_quality_id"})
 ```
 
 
@@ -334,7 +337,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-airquality = client.airquality
+airquality = client.AirQuality()
 airquality.load({"id": "example_id"})
 
 # airquality.data_get() now returns the loaded airquality data

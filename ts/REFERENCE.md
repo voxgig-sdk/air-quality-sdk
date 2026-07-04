@@ -110,7 +110,7 @@ Alias for `AirQualitySDK.test()`.
 ## AirQualityEntity
 
 ```ts
-const air_quality = client.air_quality
+const air_quality = client.AirQuality()
 ```
 
 ### Fields
@@ -136,7 +136,7 @@ const air_quality = client.air_quality
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.air_quality.load({ id: 'air_quality_id' })
+const result = await client.AirQuality().load({ id: 'air_quality_id' })
 ```
 
 ### Common Methods

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:air_quality():list() / client:air_quality():load({ id = ... })
-function AirQualitySDK:air_quality(data)
+-- Idiomatic facade: client:AirQuality():list() / client:AirQuality():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AirQualitySDK:AirQuality(data)
   local EntityMod = require("entity.air_quality_entity")
   if data == nil then
     if self._air_quality == nil then
@@ -253,12 +254,6 @@ function AirQualitySDK:air_quality(data)
     end
     return self._air_quality
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:air_quality() instead.
-function AirQualitySDK:AirQuality(data)
-  local EntityMod = require("entity.air_quality_entity")
   return EntityMod.new(self, data)
 end
 

@@ -34,8 +34,9 @@ client = AirQualitySDK.new({
 
 ```ruby
 begin
-  result = client.airquality.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare AirQuality record (raises on error).
+  airquality = client.AirQuality.load({ "id" => "example_id" })
+  puts airquality
 rescue => err
   warn "load failed: #{err}"
 end
@@ -82,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AirQualitySDK.test
+client = AirQualitySDK.test({
+  "entity" => { "airquality" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.airquality.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+airquality = client.AirQuality.load({ "id" => "test01" })
+puts airquality
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `AirQuality` | `(data) -> AirQualityEntity` | Create a AirQuality entity instance. |
+| `AirQuality` | `(data) -> AirQualityEntity` | Create an AirQuality entity instance. |
 
 ### Entity interface
 
@@ -232,7 +237,7 @@ API path: `/v1/air-quality`
 
 ### AirQuality
 
-Create an instance: `const air_quality = client.air_quality`
+Create an instance: `air_quality = client.AirQuality`
 
 #### Operations
 
@@ -258,8 +263,9 @@ Create an instance: `const air_quality = client.air_quality`
 
 #### Example: Load
 
-```ts
-const air_quality = await client.air_quality.load({ id: 'air_quality_id' })
+```ruby
+# load returns the bare AirQuality record (raises on error).
+air_quality = client.AirQuality.load({ "id" => "air_quality_id" })
 ```
 
 
@@ -334,7 +340,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-airquality = client.airquality
+airquality = client.AirQuality
 airquality.load({ "id" => "example_id" })
 
 # airquality.data_get now returns the loaded airquality data

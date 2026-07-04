@@ -204,14 +204,7 @@ class AirQualitySDK {
 
 
 
-  _air_quality?: AirQualityEntity
-
-  // Idiomatic facade: `client.air_quality.list()` / `client.air_quality.load({ id })`.
-  get air_quality(): AirQualityEntity {
-    return (this._air_quality ??= new AirQualityEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.air_quality` instead. */
+  // Entity access: `client.AirQuality().list()` / `client.AirQuality().load({ id })`.
   AirQuality(data?: any) {
     const self = this
     return new AirQualityEntity(self,data)

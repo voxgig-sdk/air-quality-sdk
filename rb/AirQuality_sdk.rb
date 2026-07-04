@@ -208,13 +208,7 @@ class AirQualitySDK
   end
 
 
-  # Idiomatic facade: client.air_quality.list / client.air_quality.load({ "id" => ... })
-  def air_quality
-    require_relative 'entity/air_quality_entity'
-    @air_quality ||= AirQualityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.air_quality instead.
+  # Canonical facade: client.AirQuality.list / client.AirQuality.load({ "id" => ... })
   def AirQuality(data = nil)
     require_relative 'entity/air_quality_entity'
     AirQualityEntity.new(self, data)

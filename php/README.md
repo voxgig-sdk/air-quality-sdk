@@ -35,9 +35,10 @@ $client = new AirQualitySDK([
 
 ```php
 try {
-    $result = $client->airquality()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare AirQuality record (throws on error).
+    $airquality = $client->AirQuality()->load(["id" => "example_id"]);
+    print_r($airquality);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -83,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = AirQualitySDK::test();
+$client = AirQualitySDK::test([
+    "entity" => ["airquality" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->airquality()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$airquality = $client->AirQuality()->load(["id" => "test01"]);
+print_r($airquality);
 ```
 
 ### Use a custom fetch function
@@ -170,7 +175,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `AirQuality` | `($data): AirQualityEntity` | Create a AirQuality entity instance. |
+| `AirQuality` | `($data): AirQualityEntity` | Create an AirQuality entity instance. |
 
 ### Entity interface
 
@@ -237,7 +242,7 @@ API path: `/v1/air-quality`
 
 ### AirQuality
 
-Create an instance: `const air_quality = client.air_quality`
+Create an instance: `$air_quality = $client->AirQuality();`
 
 #### Operations
 
@@ -263,8 +268,9 @@ Create an instance: `const air_quality = client.air_quality`
 
 #### Example: Load
 
-```ts
-const air_quality = await client.air_quality.load({ id: 'air_quality_id' })
+```php
+// load() returns the bare AirQuality record (throws on error).
+$air_quality = $client->AirQuality()->load(["id" => "air_quality_id"]);
 ```
 
 
@@ -339,7 +345,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$airquality = $client->airquality();
+$airquality = $client->AirQuality();
 $airquality->load(["id" => "example_id"]);
 
 // $airquality->dataGet() now returns the loaded airquality data

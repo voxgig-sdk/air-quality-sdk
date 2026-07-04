@@ -81,7 +81,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AirQualityEntity
 
 ```python
-air_quality = client.air_quality
+air_quality = client.AirQuality()
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ air_quality = client.air_quality
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.air_quality.load({"id": "air_quality_id"})
+result = client.AirQuality().load({"id": "air_quality_id"})
 ```
 
 ### Common Methods

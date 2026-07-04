@@ -233,10 +233,10 @@ class AirQualitySDK
 
     private $_air_quality = null;
 
-    // Idiomatic facade: $client->air_quality()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias AirQuality() (PHP method
-    // names are case-insensitive).
-    public function air_quality($data = null)
+    // Canonical facade: $client->AirQuality()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->air_quality()
+    // resolves here too.
+    public function AirQuality($data = null)
     {
         require_once __DIR__ . '/entity/air_quality_entity.php';
         if ($data === null) {
