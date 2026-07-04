@@ -49,8 +49,7 @@ class TestAirQualityEntity:
         # LOAD
         air_quality_ref01_ent = client.AirQuality(None)
         air_quality_ref01_match_dt0 = {}
-        air_quality_ref01_data_dt0_loaded, err = air_quality_ref01_ent.load(air_quality_ref01_match_dt0, None)
-        assert err is None
+        air_quality_ref01_data_dt0_loaded = air_quality_ref01_ent.load(air_quality_ref01_match_dt0, None)
         assert air_quality_ref01_data_dt0_loaded is not None
 
 

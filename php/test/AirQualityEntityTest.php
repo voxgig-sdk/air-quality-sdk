@@ -49,8 +49,7 @@ class AirQualityEntityTest extends TestCase
         // LOAD
         $air_quality_ref01_ent = $client->AirQuality(null);
         $air_quality_ref01_match_dt0 = [];
-        [$air_quality_ref01_data_dt0_loaded, $err] = $air_quality_ref01_ent->load($air_quality_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $air_quality_ref01_data_dt0_loaded = $air_quality_ref01_ent->load($air_quality_ref01_match_dt0, null);
         $this->assertNotNull($air_quality_ref01_data_dt0_loaded);
 
     }

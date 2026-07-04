@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AirQualityLoadMatch
+---@param ctrl? table
+---@return AirQuality
+---@return string? err
 function AirQualityEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## AirQualityEntity
 
 ```lua
-local air_quality = client:AirQuality(nil)
+local air_quality = client:air_quality(nil)
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ local air_quality = client:AirQuality(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:AirQuality():load({ id = "air_quality_id" })
+local result, err = client:air_quality():load({ id = "air_quality_id" })
 ```
 
 ### Common Methods

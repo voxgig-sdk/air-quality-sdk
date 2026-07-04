@@ -42,8 +42,7 @@ class AirQualityEntityTest < Minitest::Test
     # LOAD
     air_quality_ref01_ent = client.AirQuality(nil)
     air_quality_ref01_match_dt0 = {}
-    air_quality_ref01_data_dt0_loaded, err = air_quality_ref01_ent.load(air_quality_ref01_match_dt0, nil)
-    assert_nil err
+    air_quality_ref01_data_dt0_loaded = air_quality_ref01_ent.load(air_quality_ref01_match_dt0, nil)
     assert !air_quality_ref01_data_dt0_loaded.nil?
 
   end

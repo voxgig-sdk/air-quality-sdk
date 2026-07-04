@@ -245,6 +245,9 @@ func (sdk *AirQualitySDK) Direct(fetchargs map[string]any) (map[string]any, erro
 }
 
 
+// AirQuality returns a AirQuality entity bound to this client.
+// Idiomatic usage: client.AirQuality(nil).List(nil, nil) or
+// client.AirQuality(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AirQualitySDK) AirQuality(data map[string]any) AirQualityEntity {
 	return NewAirQualityEntityFunc(sdk, data)
 }
