@@ -221,7 +221,7 @@ class AirQualitySDK:
 
 
     def AirQuality(self, data=None) -> "AirQualityEntity":
-        """Entity factory: client.AirQuality().list({}) / client.AirQuality().load({"id": ...})."""
+        """Entity factory: client.AirQuality().list() / client.AirQuality().load({"id": ...})."""
         from entity.air_quality_entity import AirQualityEntity
         return AirQualityEntity(self, data)
 

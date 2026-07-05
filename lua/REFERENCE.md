@@ -91,17 +91,17 @@ local air_quality = client:AirQuality(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `table` | No |  |
+| `current_unit` | `table` | No |  |
+| `elevation` | `number` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `table` | No |  |
+| `hourly_unit` | `table` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -110,7 +110,7 @@ local air_quality = client:AirQuality(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:AirQuality():load({ id = "air_quality_id" })
+local result, err = client:AirQuality():load()
 ```
 
 ### Common Methods

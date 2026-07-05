@@ -98,17 +98,17 @@ air_quality := client.AirQuality(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `map[string]any` | No |  |
+| `current_unit` | `map[string]any` | No |  |
+| `elevation` | `float64` | No |  |
+| `generationtime_m` | `float64` | No |  |
+| `hourly` | `map[string]any` | No |  |
+| `hourly_unit` | `map[string]any` | No |  |
+| `latitude` | `float64` | No |  |
+| `longitude` | `float64` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `int` | No |  |
 
 ### Operations
 
@@ -117,7 +117,7 @@ air_quality := client.AirQuality(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.AirQuality(nil).Load(map[string]any{"id": "air_quality_id"}, nil)
+result, err := client.AirQuality(nil).Load(nil, nil)
 ```
 
 ### Common Methods

@@ -8,7 +8,7 @@ Complete API reference for the AirQuality Python SDK.
 ### Constructor
 
 ```python
-from air-quality_sdk import AirQualitySDK
+from airquality_sdk import AirQualitySDK
 
 client = AirQualitySDK(options)
 ```
@@ -88,17 +88,17 @@ air_quality = client.AirQuality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `dict` | No |  |
+| `current_unit` | `dict` | No |  |
+| `elevation` | `float` | No |  |
+| `generationtime_m` | `float` | No |  |
+| `hourly` | `dict` | No |  |
+| `hourly_unit` | `dict` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `timezone` | `str` | No |  |
+| `timezone_abbreviation` | `str` | No |  |
+| `utc_offset_second` | `int` | No |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ air_quality = client.AirQuality()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.AirQuality().load({"id": "air_quality_id"})
+result = client.AirQuality().load()
 ```
 
 ### Common Methods

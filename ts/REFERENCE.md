@@ -117,17 +117,17 @@ const air_quality = client.AirQuality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `Record<string, any>` | No |  |
+| `current_unit` | `Record<string, any>` | No |  |
+| `elevation` | `number` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `Record<string, any>` | No |  |
+| `hourly_unit` | `Record<string, any>` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -136,7 +136,7 @@ const air_quality = client.AirQuality()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.AirQuality().load({ id: 'air_quality_id' })
+const result = await client.AirQuality().load()
 ```
 
 ### Common Methods

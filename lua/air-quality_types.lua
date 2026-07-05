@@ -20,6 +20,17 @@
 ---@field utc_offset_second? number
 
 ---@class AirQualityLoadMatch
+---@field current? table
+---@field current_unit? table
+---@field elevation? number
+---@field generationtime_m? number
+---@field hourly? table
+---@field hourly_unit? table
+---@field latitude? number
+---@field longitude? number
+---@field timezone? string
+---@field timezone_abbreviation? string
+---@field utc_offset_second? number
 
 local M = {}
 

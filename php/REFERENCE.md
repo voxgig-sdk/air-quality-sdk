@@ -8,7 +8,7 @@ Complete API reference for the AirQuality PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/air-quality_sdk.php';
+require_once __DIR__ . '/airquality_sdk.php';
 
 $client = new AirQualitySDK($options);
 ```
@@ -46,11 +46,11 @@ $client = AirQualitySDK::test();
 
 Create a new `AirQualityEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): AirQualityUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,17 +93,17 @@ $air_quality = $client->AirQuality();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `array` | No |  |
+| `current_unit` | `array` | No |  |
+| `elevation` | `float` | No |  |
+| `generationtime_m` | `float` | No |  |
+| `hourly` | `array` | No |  |
+| `hourly_unit` | `array` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `int` | No |  |
 
 ### Operations
 
@@ -112,24 +112,24 @@ $air_quality = $client->AirQuality();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->AirQuality()->load(["id" => "air_quality_id"]);
+$result = $client->AirQuality()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -138,7 +138,7 @@ Set the entity match criteria.
 Create a new `AirQualityEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -8,7 +8,7 @@ Complete API reference for the AirQuality Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'air-quality_sdk'
+require_relative 'AirQuality_sdk'
 
 client = AirQualitySDK.new(options)
 ```
@@ -94,17 +94,17 @@ air_quality = client.AirQuality
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `Hash` | No |  |
+| `current_unit` | `Hash` | No |  |
+| `elevation` | `Float` | No |  |
+| `generationtime_m` | `Float` | No |  |
+| `hourly` | `Hash` | No |  |
+| `hourly_unit` | `Hash` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `timezone` | `String` | No |  |
+| `timezone_abbreviation` | `String` | No |  |
+| `utc_offset_second` | `Integer` | No |  |
 
 ### Operations
 
@@ -113,7 +113,7 @@ air_quality = client.AirQuality
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.AirQuality.load({ "id" => "air_quality_id" })
+result = client.AirQuality.load()
 ```
 
 ### Common Methods

@@ -19,5 +19,17 @@ export interface AirQuality {
   utc_offset_second?: number
 }
 
-export type AirQualityLoadMatch = Partial<AirQuality>
+export interface AirQualityLoadMatch {
+  current?: Record<string, any>
+  current_unit?: Record<string, any>
+  elevation?: number
+  generationtime_m?: number
+  hourly?: Record<string, any>
+  hourly_unit?: Record<string, any>
+  latitude?: number
+  longitude?: number
+  timezone?: string
+  timezone_abbreviation?: string
+  utc_offset_second?: number
+}
 

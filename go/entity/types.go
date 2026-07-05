@@ -23,8 +23,7 @@ type AirQuality struct {
 	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
 }
 
-// AirQualityLoadMatch mirrors the air_quality fields as an all-optional match
-// filter (Go analog of Partial<AirQuality>).
+// AirQualityLoadMatch is the typed request payload for AirQuality.LoadTyped.
 type AirQualityLoadMatch struct {
 	Current *map[string]any `json:"current,omitempty"`
 	CurrentUnit *map[string]any `json:"current_unit,omitempty"`

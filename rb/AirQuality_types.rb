@@ -57,7 +57,7 @@ AirQuality = Struct.new(
   keyword_init: true
 )
 
-# Match filter for AirQuality#load (any subset of AirQuality fields).
+# Request payload for AirQuality#load.
 #
 # @!attribute [rw] current
 #   @return [Hash, nil]

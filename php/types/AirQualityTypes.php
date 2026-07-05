@@ -28,7 +28,7 @@ class AirQuality
     public ?int $utc_offset_second = null;
 }
 
-/** Match filter for AirQuality#load (any subset of AirQuality fields). */
+/** Request payload for AirQuality#load. */
 class AirQualityLoadMatch
 {
     public ?array $current = null;
