@@ -91,7 +91,8 @@ same parameters as `Direct()`.
 ## AirQualityEntity
 
 ```go
-air_quality := client.AirQuality(nil)
+airQuality := client.AirQuality(nil)
+fmt.Println(airQuality.GetName()) // "air_quality"
 ```
 
 ### Fields
@@ -118,6 +119,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.AirQuality(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

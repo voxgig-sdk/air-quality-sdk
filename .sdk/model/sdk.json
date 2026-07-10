@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -432,6 +429,14 @@
           "name": "Attribution 4.0 International (CC BY 4.0)",
           "url": "https://creativecommons.org/licenses/by/4.0/"
         },
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "query",
+          "name": "apikey",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
@@ -442,8 +447,10 @@
             "url": "https://customer-air-quality-api.open-meteo.com"
           }
         ],
+        "summary": "Pollutants and pollen forecast in 11 km resolution.",
         "title": "Air Quality API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://open-meteo.com/en/docs/air-quality-api"
       },
       "option": {},
       "target": {
@@ -496,6 +503,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -546,6 +556,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

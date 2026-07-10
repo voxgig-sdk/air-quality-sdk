@@ -53,12 +53,12 @@ func main() {
         "apikey": os.Getenv("AIR_QUALITY_APIKEY"),
     })
 
-    // Load a single airquality — the value is the loaded record.
-    airquality, err := client.AirQuality(nil).Load(nil, nil)
+    // Load a single airQuality — the value is the loaded record.
+    airQuality, err := client.AirQuality(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(airquality)
+    fmt.Println(airQuality)
 }
 ```
 
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-airquality, err := client.AirQuality(nil).Load(
+airQuality, err := client.AirQuality(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(airquality) // the returned mock data
+fmt.Println(airQuality) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -250,9 +250,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    airquality, err := client.AirQuality(nil).Load(nil, nil)
+    airQuality, err := client.AirQuality(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // airquality is the returned record
+    // airQuality is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -286,7 +286,7 @@ API path: `/v1/air-quality`
 
 ### AirQuality
 
-Create an instance: `air_quality := client.AirQuality(nil)`
+Create an instance: `airQuality := client.AirQuality(nil)`
 
 #### Operations
 
@@ -313,11 +313,11 @@ Create an instance: `air_quality := client.AirQuality(nil)`
 #### Example: Load
 
 ```go
-air_quality, err := client.AirQuality(nil).Load(nil, nil)
+airQuality, err := client.AirQuality(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(air_quality) // the loaded record
+fmt.Println(airQuality) // the loaded record
 ```
 
 
