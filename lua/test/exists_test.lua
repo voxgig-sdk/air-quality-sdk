@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- AirQuality SDK exists test
 
 local sdk = require("air-quality_sdk")
 
