@@ -36,7 +36,7 @@ client = AirQualitySDK.new({
 
 ```ruby
 begin
-  # load returns the bare AirQuality record (raises on error).
+  # load returns the ENTITY — call data_get for the AirQuality record (raises on error).
   airquality = client.AirQuality.load()
   puts airquality
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AirQualitySDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 airquality = client.AirQuality.load()
 puts airquality
 ```
@@ -239,16 +240,16 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `current_unit` |  |
+| `current_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -274,21 +275,21 @@ Create an instance: `air_quality = client.AirQuality`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `Hash` |  |
-| `current_unit` | `Hash` |  |
+| `current_units` | `Hash` |  |
 | `elevation` | `Float` |  |
-| `generationtime_m` | `Float` |  |
+| `generationtime_ms` | `Float` |  |
 | `hourly` | `Hash` |  |
-| `hourly_unit` | `Hash` |  |
+| `hourly_units` | `Hash` |  |
 | `latitude` | `Float` |  |
 | `longitude` | `Float` |  |
 | `timezone` | `String` |  |
 | `timezone_abbreviation` | `String` |  |
-| `utc_offset_second` | `Integer` |  |
+| `utc_offset_seconds` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare AirQuality record (raises on error).
+# load returns the ENTITY — call data_get for the AirQuality record (raises on error).
 air_quality = client.AirQuality.load()
 ```
 

@@ -8,29 +8,29 @@
 
 ---@class AirQuality
 ---@field current? table
----@field current_unit? table
+---@field current_units? table
 ---@field elevation? number
----@field generationtime_m? number
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 ---@class AirQualityLoadMatch
 ---@field current? table
----@field current_unit? table
+---@field current_units? table
 ---@field elevation? number
----@field generationtime_m? number
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 local M = {}
 

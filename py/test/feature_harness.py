@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AirQualityControl
-from core.error import AirQualityError
-from core.result import AirQualityResult
-from core.spec import AirQualitySpec
+from airquality_sdk.config import make_config
+from airquality_sdk.features import _make_feature
+from airquality_sdk.core.control import AirQualityControl
+from airquality_sdk.core.error import AirQualityError
+from airquality_sdk.core.result import AirQualityResult
+from airquality_sdk.core.spec import AirQualitySpec
 
 
 # True when this SDK was generated with the named feature.

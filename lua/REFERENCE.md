@@ -92,16 +92,16 @@ local air_quality = client:AirQuality(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `table` | No |  |
-| `current_unit` | `table` | No |  |
+| `current_units` | `table` | No |  |
 | `elevation` | `number` | No |  |
-| `generationtime_m` | `number` | No |  |
+| `generationtime_ms` | `number` | No |  |
 | `hourly` | `table` | No |  |
-| `hourly_unit` | `table` | No |  |
+| `hourly_units` | `table` | No |  |
 | `latitude` | `number` | No |  |
 | `longitude` | `number` | No |  |
 | `timezone` | `string` | No |  |
 | `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_second` | `number` | No |  |
+| `utc_offset_seconds` | `number` | No |  |
 
 ### Operations
 

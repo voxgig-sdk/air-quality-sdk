@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AirQualitySDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AirQualitySDK.test({
+  entity: {
+    air_quality: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const airquality = await client.AirQuality().load()
-// airquality is a bare AirQuality populated with mock data
+// airquality is the AirQuality entity, populated with mock data
+// — call airquality.data() for the record itself
 console.log(airquality)
 ```
 
@@ -189,7 +198,7 @@ $client = new AirQualitySDK([
 ]);
 
 
-// Load a specific airquality (returns the bare record; throws on error)
+// Load a specific airquality (returns the ENTITY; call data_get() for the record; throws on error)
 $airquality = $client->AirQuality()->load();
 print_r($airquality);
 ```
@@ -221,7 +230,7 @@ client = AirQualitySDK.new({
 })
 
 
-# Load a specific airquality (returns the bare record; raises on error)
+# Load a specific airquality (returns the ENTITY; call data_get for the record)
 airquality = client.AirQuality.load()
 puts airquality
 ```
@@ -357,6 +366,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://open-meteo.com](https://open-meteo.com)
 

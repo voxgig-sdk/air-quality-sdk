@@ -37,7 +37,7 @@ module AirQualityConfig
             },
             {
               "active" => true,
-              "name" => "current_unit",
+              "name" => "current_units",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 1,
@@ -51,7 +51,7 @@ module AirQualityConfig
             },
             {
               "active" => true,
-              "name" => "generationtime_m",
+              "name" => "generationtime_ms",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 3,
@@ -65,7 +65,7 @@ module AirQualityConfig
             },
             {
               "active" => true,
-              "name" => "hourly_unit",
+              "name" => "hourly_units",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 5,
@@ -100,7 +100,7 @@ module AirQualityConfig
             },
             {
               "active" => true,
-              "name" => "utc_offset_second",
+              "name" => "utc_offset_seconds",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 10,
@@ -268,6 +268,7 @@ module AirQualityConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/air-quality",
                   "parts" => [

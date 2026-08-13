@@ -26,8 +26,8 @@ import {
 describe('AirQualityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when AIRQUALITY_TEST_LIVE=TRUE.
-  afterEach(liveDelay('AIRQUALITY_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when AIR_QUALITY_TEST_LIVE=TRUE.
+  afterEach(liveDelay('AIR_QUALITY_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AirQualitySDK.test()
@@ -62,7 +62,7 @@ describe('AirQualityEntity', async () => {
     // LOAD
     const air_quality_ref01_ent = client.AirQuality()
     const air_quality_ref01_match_dt0: any = {}
-    const air_quality_ref01_data_dt0 = await air_quality_ref01_ent.load(air_quality_ref01_match_dt0)
+    const air_quality_ref01_data_dt0 = (await air_quality_ref01_ent.load(air_quality_ref01_match_dt0)).data()
     assert(null != air_quality_ref01_data_dt0)
 
 

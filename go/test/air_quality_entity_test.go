@@ -44,7 +44,7 @@ func TestAirQualityEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set AIRQUALITY_TEST_AIR_QUALITY_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set AIR_QUALITY_TEST_AIR_QUALITY_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -110,38 +110,38 @@ func air_qualityBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("AIRQUALITY_TEST_AIR_QUALITY_ENTID")
+	entidEnvRaw := os.Getenv("AIR_QUALITY_TEST_AIR_QUALITY_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"AIRQUALITY_TEST_AIR_QUALITY_ENTID": idmap,
-		"AIRQUALITY_TEST_LIVE":      "FALSE",
-		"AIRQUALITY_TEST_EXPLAIN":   "FALSE",
-		"AIRQUALITY_APIKEY":         "NONE",
+		"AIR_QUALITY_TEST_AIR_QUALITY_ENTID": idmap,
+		"AIR_QUALITY_TEST_LIVE":      "FALSE",
+		"AIR_QUALITY_TEST_EXPLAIN":   "FALSE",
+		"AIR_QUALITY_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["AIRQUALITY_TEST_AIR_QUALITY_ENTID"])
+	idmapResolved := core.ToMapAny(env["AIR_QUALITY_TEST_AIR_QUALITY_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["AIRQUALITY_TEST_LIVE"] == "TRUE" {
+	if env["AIR_QUALITY_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["AIRQUALITY_APIKEY"],
+				"apikey": env["AIR_QUALITY_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewAirQualitySDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["AIRQUALITY_TEST_LIVE"] == "TRUE"
+	live := env["AIR_QUALITY_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["AIRQUALITY_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["AIR_QUALITY_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

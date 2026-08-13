@@ -23,8 +23,8 @@ module AirQualityTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("AIRQUALITY_TEST_LIVE")
-    override = getenv("AIRQUALITY_TEST_OVERRIDE")
+    live = getenv("AIR_QUALITY_TEST_LIVE")
+    override = getenv("AIR_QUALITY_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module AirQualityTestRunner
       end
     end
 
-    explain = getenv("AIRQUALITY_TEST_EXPLAIN")
-    m["AIRQUALITY_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("AIR_QUALITY_TEST_EXPLAIN")
+    m["AIR_QUALITY_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

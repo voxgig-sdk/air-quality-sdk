@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AirQualityUtility.registrar = ->(u) {
   u.prepare_params = AirQualityUtilities::PrepareParams
   u.prepare_path = AirQualityUtilities::PreparePath
   u.prepare_query = AirQualityUtilities::PrepareQuery
+  u.graphql_body = AirQualityUtilities::GraphqlBody
+  u.graphql_errors = AirQualityUtilities::GraphqlErrors
   u.result_basic = AirQualityUtilities::ResultBasic
   u.result_body = AirQualityUtilities::ResultBody
   u.result_headers = AirQualityUtilities::ResultHeaders

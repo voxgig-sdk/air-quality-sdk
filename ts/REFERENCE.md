@@ -118,16 +118,16 @@ const air_quality = client.AirQuality()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `Record<string, any>` | No |  |
-| `current_unit` | `Record<string, any>` | No |  |
+| `current_units` | `Record<string, any>` | No |  |
 | `elevation` | `number` | No |  |
-| `generationtime_m` | `number` | No |  |
+| `generationtime_ms` | `number` | No |  |
 | `hourly` | `Record<string, any>` | No |  |
-| `hourly_unit` | `Record<string, any>` | No |  |
+| `hourly_units` | `Record<string, any>` | No |  |
 | `latitude` | `number` | No |  |
 | `longitude` | `number` | No |  |
 | `timezone` | `string` | No |  |
 | `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_second` | `number` | No |  |
+| `utc_offset_seconds` | `number` | No |  |
 
 ### Operations
 

@@ -7,29 +7,29 @@
 
 export interface AirQuality {
   current?: Record<string, any>
-  current_unit?: Record<string, any>
+  current_units?: Record<string, any>
   elevation?: number
-  generationtime_m?: number
+  generationtime_ms?: number
   hourly?: Record<string, any>
-  hourly_unit?: Record<string, any>
+  hourly_units?: Record<string, any>
   latitude?: number
   longitude?: number
   timezone?: string
   timezone_abbreviation?: string
-  utc_offset_second?: number
+  utc_offset_seconds?: number
 }
 
 export interface AirQualityLoadMatch {
   current?: Record<string, any>
-  current_unit?: Record<string, any>
+  current_units?: Record<string, any>
   elevation?: number
-  generationtime_m?: number
+  generationtime_ms?: number
   hourly?: Record<string, any>
-  hourly_unit?: Record<string, any>
+  hourly_units?: Record<string, any>
   latitude?: number
   longitude?: number
   timezone?: string
   timezone_abbreviation?: string
-  utc_offset_second?: number
+  utc_offset_seconds?: number
 }
 

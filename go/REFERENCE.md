@@ -100,16 +100,16 @@ fmt.Println(airQuality.GetName()) // "air_quality"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `map[string]any` | No |  |
-| `current_unit` | `map[string]any` | No |  |
+| `current_units` | `map[string]any` | No |  |
 | `elevation` | `float64` | No |  |
-| `generationtime_m` | `float64` | No |  |
+| `generationtime_ms` | `float64` | No |  |
 | `hourly` | `map[string]any` | No |  |
-| `hourly_unit` | `map[string]any` | No |  |
+| `hourly_units` | `map[string]any` | No |  |
 | `latitude` | `float64` | No |  |
 | `longitude` | `float64` | No |  |
 | `timezone` | `string` | No |  |
 | `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 
