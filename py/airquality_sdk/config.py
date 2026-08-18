@@ -1,7 +1,30 @@
 # AirQuality SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "AirQuality",
@@ -29,81 +52,48 @@ def make_config():
       "air_quality": {
         "fields": [
           {
-            "active": True,
             "name": "current",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "current_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "elevation",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "generationtime_ms",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "hourly",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "hourly_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "latitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "longitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "timezone",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "timezone_abbreviation",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "utc_offset_seconds",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 10,
           },
         ],
         "name": "air_quality",
@@ -113,90 +103,70 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "apikey",
                       "orig": "apikey",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "nearest",
                       "kind": "query",
                       "name": "cell_selection",
                       "orig": "cell_selection",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "european_aqi,pm10,pm2_5",
                       "kind": "query",
                       "name": "current",
                       "orig": "current",
-                      "reqd": False,
                       "type": "`$ANY`",
                     },
                     {
-                      "active": True,
                       "example": "auto",
                       "kind": "query",
                       "name": "domain",
                       "orig": "domain",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2024-01-07",
                       "kind": "query",
                       "name": "end_date",
                       "orig": "end_date",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2024-01-07T23:00",
                       "kind": "query",
                       "name": "end_hour",
                       "orig": "end_hour",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": 5,
                       "kind": "query",
                       "name": "forecast_day",
                       "orig": "forecast_day",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "forecast_hour",
                       "orig": "forecast_hour",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": "pm10,pm2_5,european_aqi",
                       "kind": "query",
                       "name": "hourly",
                       "orig": "hourly",
-                      "reqd": False,
                       "type": "`$ANY`",
                     },
                     {
-                      "active": True,
                       "example": 52.52,
                       "kind": "query",
                       "name": "latitude",
@@ -205,7 +175,6 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "example": 13.419,
                       "kind": "query",
                       "name": "longitude",
@@ -214,56 +183,44 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "example": 0,
                       "kind": "query",
                       "name": "past_day",
                       "orig": "past_day",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "past_hour",
                       "orig": "past_hour",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": "2024-01-01",
                       "kind": "query",
                       "name": "start_date",
                       "orig": "start_date",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2024-01-01T00:00",
                       "kind": "query",
                       "name": "start_hour",
                       "orig": "start_hour",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "iso8601",
                       "kind": "query",
                       "name": "timeformat",
                       "orig": "timeformat",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "Europe/Berlin",
                       "kind": "query",
                       "name": "timezone",
                       "orig": "timezone",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -300,10 +257,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

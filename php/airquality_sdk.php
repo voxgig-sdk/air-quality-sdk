@@ -40,7 +40,7 @@ class AirQualitySDK
         $utility = new AirQualityUtility();
         $this->_utility = $utility;
 
-        $config = AirQualityConfig::make_config();
+        $config = AirQualityConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

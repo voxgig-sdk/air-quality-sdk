@@ -28,7 +28,7 @@ class AirQualitySDK
     utility = AirQualityUtility.new
     @_utility = utility
 
-    config = AirQualityConfig.make_config
+    config = AirQualityConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

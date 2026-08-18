@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://air-quality-api.open-meteo.com',
+    base: "https://air-quality-api.open-meteo.com",
 
     auth: {
       prefix: '',
@@ -59,81 +59,48 @@ class Config {
     "air_quality": {
       "fields": [
         {
-          "active": true,
           "name": "current",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "current_units",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "elevation",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "generationtime_ms",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "hourly",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "hourly_units",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "latitude",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 6
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "longitude",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 7
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "timezone",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "timezone_abbreviation",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "utc_offset_seconds",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "type": "`$INTEGER`"
         }
       ],
       "name": "air_quality",
@@ -143,90 +110,70 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "apikey",
                     "orig": "apikey",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "nearest",
                     "kind": "query",
                     "name": "cell_selection",
                     "orig": "cell_selection",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "european_aqi,pm10,pm2_5",
                     "kind": "query",
                     "name": "current",
                     "orig": "current",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "example": "auto",
                     "kind": "query",
                     "name": "domain",
                     "orig": "domain",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2024-01-07",
                     "kind": "query",
                     "name": "end_date",
                     "orig": "end_date",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2024-01-07T23:00",
                     "kind": "query",
                     "name": "end_hour",
                     "orig": "end_hour",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 5,
                     "kind": "query",
                     "name": "forecast_day",
                     "orig": "forecast_day",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "forecast_hour",
                     "orig": "forecast_hour",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "pm10,pm2_5,european_aqi",
                     "kind": "query",
                     "name": "hourly",
                     "orig": "hourly",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "example": 52.52,
                     "kind": "query",
                     "name": "latitude",
@@ -235,7 +182,6 @@ class Config {
                     "type": "`$NUMBER`"
                   },
                   {
-                    "active": true,
                     "example": 13.419,
                     "kind": "query",
                     "name": "longitude",
@@ -244,56 +190,44 @@ class Config {
                     "type": "`$NUMBER`"
                   },
                   {
-                    "active": true,
                     "example": 0,
                     "kind": "query",
                     "name": "past_day",
                     "orig": "past_day",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "past_hour",
                     "orig": "past_hour",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "2024-01-01",
                     "kind": "query",
                     "name": "start_date",
                     "orig": "start_date",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2024-01-01T00:00",
                     "kind": "query",
                     "name": "start_hour",
                     "orig": "start_hour",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "iso8601",
                     "kind": "query",
                     "name": "timeformat",
                     "orig": "timeformat",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "Europe/Berlin",
                     "kind": "query",
                     "name": "timezone",
                     "orig": "timezone",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -329,11 +263,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
