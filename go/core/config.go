@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "AirQuality",
+			"slug": "air-quality",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,46 +39,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "current",
+						"short": "Current conditions data",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "current_units",
+						"short": "Units for current conditions variables",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "elevation",
+						"short": "Elevation in meters of the selected grid cell",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "generationtime_ms",
+						"short": "Generation time of the forecast in milliseconds",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "hourly",
+						"short": "Hourly forecast data",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "hourly_units",
+						"short": "Units for each hourly variable",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "latitude",
+						"short": "WGS84 latitude of the center of the weather grid-cell used for the forecast",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "longitude",
+						"short": "WGS84 longitude of the center of the weather grid-cell used for the forecast",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "timezone",
+						"short": "Timezone identifier (e.g., Europe/Berlin)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "timezone_abbreviation",
+						"short": "Timezone abbreviation (e.g., CEST)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "utc_offset_seconds",
+						"short": "Applied timezone offset in seconds",
 						"type": "`$INTEGER`",
 					},
 				},

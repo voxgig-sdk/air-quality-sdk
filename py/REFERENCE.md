@@ -88,17 +88,17 @@ air_quality = client.AirQuality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `dict` | No |  |
-| `current_units` | `dict` | No |  |
-| `elevation` | `float` | No |  |
-| `generationtime_ms` | `float` | No |  |
-| `hourly` | `dict` | No |  |
-| `hourly_units` | `dict` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `timezone` | `str` | No |  |
-| `timezone_abbreviation` | `str` | No |  |
-| `utc_offset_seconds` | `int` | No |  |
+| `current` | `dict` | No | Current conditions data |
+| `current_units` | `dict` | No | Units for current conditions variables |
+| `elevation` | `float` | No | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `float` | No | Generation time of the forecast in milliseconds |
+| `hourly` | `dict` | No | Hourly forecast data |
+| `hourly_units` | `dict` | No | Units for each hourly variable |
+| `latitude` | `float` | No | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `float` | No | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `str` | No | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `str` | No | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `int` | No | Applied timezone offset in seconds |
 
 ### Operations
 

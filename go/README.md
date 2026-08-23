@@ -6,7 +6,7 @@ The Golang SDK for the AirQuality API — an entity-oriented client using standa
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.AirQuality(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,17 +263,17 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"current"` |  |
-| `"current_units"` |  |
-| `"elevation"` |  |
-| `"generationtime_ms"` |  |
-| `"hourly"` |  |
-| `"hourly_units"` |  |
-| `"latitude"` |  |
-| `"longitude"` |  |
-| `"timezone"` |  |
-| `"timezone_abbreviation"` |  |
-| `"utc_offset_seconds"` |  |
+| `"current"` | Current conditions data |
+| `"current_units"` | Units for current conditions variables |
+| `"elevation"` | Elevation in meters of the selected grid cell |
+| `"generationtime_ms"` | Generation time of the forecast in milliseconds |
+| `"hourly"` | Hourly forecast data |
+| `"hourly_units"` | Units for each hourly variable |
+| `"latitude"` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `"longitude"` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `"timezone"` | Timezone identifier (e.g., Europe/Berlin) |
+| `"timezone_abbreviation"` | Timezone abbreviation (e.g., CEST) |
+| `"utc_offset_seconds"` | Applied timezone offset in seconds |
 
 Operations: Load.
 
@@ -298,17 +298,17 @@ Create an instance: `airQuality := client.AirQuality(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `map[string]any` |  |
-| `current_units` | `map[string]any` |  |
-| `elevation` | `float64` |  |
-| `generationtime_ms` | `float64` |  |
-| `hourly` | `map[string]any` |  |
-| `hourly_units` | `map[string]any` |  |
-| `latitude` | `float64` |  |
-| `longitude` | `float64` |  |
-| `timezone` | `string` |  |
-| `timezone_abbreviation` | `string` |  |
-| `utc_offset_seconds` | `int` |  |
+| `current` | `map[string]any` | Current conditions data |
+| `current_units` | `map[string]any` | Units for current conditions variables |
+| `elevation` | `float64` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `float64` | Generation time of the forecast in milliseconds |
+| `hourly` | `map[string]any` | Hourly forecast data |
+| `hourly_units` | `map[string]any` | Units for each hourly variable |
+| `latitude` | `float64` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `float64` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `string` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `string` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `int` | Applied timezone offset in seconds |
 
 #### Example: Load
 

@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "AirQuality",
+            "slug": "air-quality",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -53,46 +56,57 @@ def make_config():
         "fields": [
           {
             "name": "current",
+            "short": "Current conditions data",
             "type": "`$OBJECT`",
           },
           {
             "name": "current_units",
+            "short": "Units for current conditions variables",
             "type": "`$OBJECT`",
           },
           {
             "name": "elevation",
+            "short": "Elevation in meters of the selected grid cell",
             "type": "`$NUMBER`",
           },
           {
             "name": "generationtime_ms",
+            "short": "Generation time of the forecast in milliseconds",
             "type": "`$NUMBER`",
           },
           {
             "name": "hourly",
+            "short": "Hourly forecast data",
             "type": "`$OBJECT`",
           },
           {
             "name": "hourly_units",
+            "short": "Units for each hourly variable",
             "type": "`$OBJECT`",
           },
           {
             "name": "latitude",
+            "short": "WGS84 latitude of the center of the weather grid-cell used for the forecast",
             "type": "`$NUMBER`",
           },
           {
             "name": "longitude",
+            "short": "WGS84 longitude of the center of the weather grid-cell used for the forecast",
             "type": "`$NUMBER`",
           },
           {
             "name": "timezone",
+            "short": "Timezone identifier (e.g., Europe/Berlin)",
             "type": "`$STRING`",
           },
           {
             "name": "timezone_abbreviation",
+            "short": "Timezone abbreviation (e.g., CEST)",
             "type": "`$STRING`",
           },
           {
             "name": "utc_offset_seconds",
+            "short": "Applied timezone offset in seconds",
             "type": "`$INTEGER`",
           },
         ],

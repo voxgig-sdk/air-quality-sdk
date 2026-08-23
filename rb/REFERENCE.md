@@ -94,17 +94,17 @@ air_quality = client.AirQuality
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `Hash` | No |  |
-| `current_units` | `Hash` | No |  |
-| `elevation` | `Float` | No |  |
-| `generationtime_ms` | `Float` | No |  |
-| `hourly` | `Hash` | No |  |
-| `hourly_units` | `Hash` | No |  |
-| `latitude` | `Float` | No |  |
-| `longitude` | `Float` | No |  |
-| `timezone` | `String` | No |  |
-| `timezone_abbreviation` | `String` | No |  |
-| `utc_offset_seconds` | `Integer` | No |  |
+| `current` | `Hash` | No | Current conditions data |
+| `current_units` | `Hash` | No | Units for current conditions variables |
+| `elevation` | `Float` | No | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `Float` | No | Generation time of the forecast in milliseconds |
+| `hourly` | `Hash` | No | Hourly forecast data |
+| `hourly_units` | `Hash` | No | Units for each hourly variable |
+| `latitude` | `Float` | No | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `Float` | No | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `String` | No | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `String` | No | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `Integer` | No | Applied timezone offset in seconds |
 
 ### Operations
 

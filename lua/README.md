@@ -229,17 +229,17 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current conditions data |
+| `current_units` | Units for current conditions variables |
+| `elevation` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | Generation time of the forecast in milliseconds |
+| `hourly` | Hourly forecast data |
+| `hourly_units` | Units for each hourly variable |
+| `latitude` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | Applied timezone offset in seconds |
 
 Operations: Load.
 
@@ -264,17 +264,17 @@ Create an instance: `local air_quality = client:AirQuality(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `table` |  |
-| `current_units` | `table` |  |
-| `elevation` | `number` |  |
-| `generationtime_ms` | `number` |  |
-| `hourly` | `table` |  |
-| `hourly_units` | `table` |  |
-| `latitude` | `number` |  |
-| `longitude` | `number` |  |
-| `timezone` | `string` |  |
-| `timezone_abbreviation` | `string` |  |
-| `utc_offset_seconds` | `number` |  |
+| `current` | `table` | Current conditions data |
+| `current_units` | `table` | Units for current conditions variables |
+| `elevation` | `number` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `number` | Generation time of the forecast in milliseconds |
+| `hourly` | `table` | Hourly forecast data |
+| `hourly_units` | `table` | Units for each hourly variable |
+| `latitude` | `number` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `number` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `string` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `string` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `number` | Applied timezone offset in seconds |
 
 #### Example: Load
 

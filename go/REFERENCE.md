@@ -99,17 +99,17 @@ fmt.Println(airQuality.GetName()) // "air_quality"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `map[string]any` | No |  |
-| `current_units` | `map[string]any` | No |  |
-| `elevation` | `float64` | No |  |
-| `generationtime_ms` | `float64` | No |  |
-| `hourly` | `map[string]any` | No |  |
-| `hourly_units` | `map[string]any` | No |  |
-| `latitude` | `float64` | No |  |
-| `longitude` | `float64` | No |  |
-| `timezone` | `string` | No |  |
-| `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_seconds` | `int` | No |  |
+| `current` | `map[string]any` | No | Current conditions data |
+| `current_units` | `map[string]any` | No | Units for current conditions variables |
+| `elevation` | `float64` | No | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `float64` | No | Generation time of the forecast in milliseconds |
+| `hourly` | `map[string]any` | No | Hourly forecast data |
+| `hourly_units` | `map[string]any` | No | Units for each hourly variable |
+| `latitude` | `float64` | No | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `float64` | No | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `string` | No | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `string` | No | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `int` | No | Applied timezone offset in seconds |
 
 ### Operations
 

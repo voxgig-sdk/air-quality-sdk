@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -291,17 +291,17 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current conditions data |
+| `current_units` | Units for current conditions variables |
+| `elevation` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | Generation time of the forecast in milliseconds |
+| `hourly` | Hourly forecast data |
+| `hourly_units` | Units for each hourly variable |
+| `latitude` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | Applied timezone offset in seconds |
 
 Operations: load.
 
@@ -326,17 +326,17 @@ Create an instance: `const air_quality = client.AirQuality()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `Record<string, any>` |  |
-| `current_units` | `Record<string, any>` |  |
-| `elevation` | `number` |  |
-| `generationtime_ms` | `number` |  |
-| `hourly` | `Record<string, any>` |  |
-| `hourly_units` | `Record<string, any>` |  |
-| `latitude` | `number` |  |
-| `longitude` | `number` |  |
-| `timezone` | `string` |  |
-| `timezone_abbreviation` | `string` |  |
-| `utc_offset_seconds` | `number` |  |
+| `current` | `Record<string, any>` | Current conditions data |
+| `current_units` | `Record<string, any>` | Units for current conditions variables |
+| `elevation` | `number` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `number` | Generation time of the forecast in milliseconds |
+| `hourly` | `Record<string, any>` | Hourly forecast data |
+| `hourly_units` | `Record<string, any>` | Units for each hourly variable |
+| `latitude` | `number` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `number` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `string` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `string` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `number` | Applied timezone offset in seconds |
 
 #### Example: Load
 

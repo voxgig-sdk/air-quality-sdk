@@ -246,17 +246,17 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current conditions data |
+| `current_units` | Units for current conditions variables |
+| `elevation` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | Generation time of the forecast in milliseconds |
+| `hourly` | Hourly forecast data |
+| `hourly_units` | Units for each hourly variable |
+| `latitude` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | Applied timezone offset in seconds |
 
 Operations: Load.
 
@@ -281,17 +281,17 @@ Create an instance: `air_quality = client.AirQuality()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `dict` |  |
-| `current_units` | `dict` |  |
-| `elevation` | `float` |  |
-| `generationtime_ms` | `float` |  |
-| `hourly` | `dict` |  |
-| `hourly_units` | `dict` |  |
-| `latitude` | `float` |  |
-| `longitude` | `float` |  |
-| `timezone` | `str` |  |
-| `timezone_abbreviation` | `str` |  |
-| `utc_offset_seconds` | `int` |  |
+| `current` | `dict` | Current conditions data |
+| `current_units` | `dict` | Units for current conditions variables |
+| `elevation` | `float` | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `float` | Generation time of the forecast in milliseconds |
+| `hourly` | `dict` | Hourly forecast data |
+| `hourly_units` | `dict` | Units for each hourly variable |
+| `latitude` | `float` | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `float` | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `str` | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `str` | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `int` | Applied timezone offset in seconds |
 
 #### Example: Load
 

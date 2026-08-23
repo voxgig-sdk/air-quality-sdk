@@ -93,17 +93,17 @@ $air_quality = $client->AirQuality();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `array` | No |  |
-| `current_units` | `array` | No |  |
-| `elevation` | `float` | No |  |
-| `generationtime_ms` | `float` | No |  |
-| `hourly` | `array` | No |  |
-| `hourly_units` | `array` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `timezone` | `string` | No |  |
-| `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_seconds` | `int` | No |  |
+| `current` | `array` | No | Current conditions data |
+| `current_units` | `array` | No | Units for current conditions variables |
+| `elevation` | `float` | No | Elevation in meters of the selected grid cell |
+| `generationtime_ms` | `float` | No | Generation time of the forecast in milliseconds |
+| `hourly` | `array` | No | Hourly forecast data |
+| `hourly_units` | `array` | No | Units for each hourly variable |
+| `latitude` | `float` | No | WGS84 latitude of the center of the weather grid-cell used for the forecast |
+| `longitude` | `float` | No | WGS84 longitude of the center of the weather grid-cell used for the forecast |
+| `timezone` | `string` | No | Timezone identifier (e.g., Europe/Berlin) |
+| `timezone_abbreviation` | `string` | No | Timezone abbreviation (e.g., CEST) |
+| `utc_offset_seconds` | `int` | No | Applied timezone offset in seconds |
 
 ### Operations
 
