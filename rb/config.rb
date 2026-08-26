@@ -28,6 +28,7 @@ module AirQualityConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
