@@ -45,7 +45,7 @@ client = AirQualitySDK({
 
 ```python
 try:
-    airquality = client.AirQuality().load()
+    airquality = client.AirQuality().load({"latitude": 1, "longitude": 1})
     print(airquality)
 except Exception as err:
     print(f"load failed: {err}")
@@ -58,7 +58,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    airquality = client.AirQuality().load()
+    airquality = client.AirQuality().load({"latitude": 1, "longitude": 1})
     print(airquality)
 except Exception as err:
     print(f"load failed: {err}")
@@ -127,7 +127,7 @@ client = AirQualitySDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-airquality = client.AirQuality().load()
+airquality = client.AirQuality().load({"latitude": 1, "longitude": 1})
 # airquality contains the mock response record
 ```
 
@@ -296,8 +296,31 @@ Create an instance: `air_quality = client.AirQuality()`
 #### Example: Load
 
 ```python
-air_quality = client.AirQuality().load()
+air_quality = client.AirQuality().load({"latitude": 1, "longitude": 1})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -376,7 +399,7 @@ stores the returned data and match criteria internally.
 
 ```python
 airquality = client.AirQuality()
-airquality.load()
+airquality.load({"latitude": 1, "longitude": 1})
 
 # airquality.data_get() now returns the airquality data from the last load
 # airquality.match_get() returns the last match criteria

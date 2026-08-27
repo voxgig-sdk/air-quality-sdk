@@ -41,7 +41,7 @@ const client = new AirQualitySDK({
 
 ```ts
 try {
-  const airquality = await client.AirQuality().load()
+  const airquality = await client.AirQuality().load({ latitude: 1, longitude: 1 })
   console.log(airquality)
 } catch (err) {
   console.error('load failed:', err)
@@ -55,7 +55,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const airquality = await client.AirQuality().load()
+  const airquality = await client.AirQuality().load({ latitude: 1, longitude: 1 })
   console.log(airquality)
 } catch (err) {
   console.error('load failed:', err)
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AirQualitySDK.test()
 
-const airquality = await client.AirQuality().load()
+const airquality = await client.AirQuality().load({ latitude: 1, longitude: 1 })
 // airquality is the entity, populated with mock response data
 // — call airquality.data() for the record itself
 console.log(airquality)
@@ -143,7 +143,7 @@ Entity instances remember their last match and data:
 const entity = client.AirQuality()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ latitude: 1, longitude: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -341,8 +341,31 @@ Create an instance: `const air_quality = client.AirQuality()`
 #### Example: Load
 
 ```ts
-const air_quality = await client.AirQuality().load()
+const air_quality = await client.AirQuality().load({ latitude: 1, longitude: 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -415,7 +438,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const airquality = client.AirQuality()
-await airquality.load()
+await airquality.load({ latitude: 1, longitude: 1 })
 
 // airquality.data() now returns the airquality data from the last `load`
 // airquality.match() returns the last match criteria

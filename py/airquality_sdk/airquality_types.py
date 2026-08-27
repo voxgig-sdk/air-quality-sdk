@@ -30,15 +30,24 @@ class AirQuality(TypedDict, total=False):
     utc_offset_seconds: int
 
 
-class AirQualityLoadMatch(TypedDict, total=False):
-    current: dict
-    current_units: dict
-    elevation: float
-    generationtime_ms: float
-    hourly: dict
-    hourly_units: dict
+class AirQualityLoadMatchRequired(TypedDict):
     latitude: float
     longitude: float
+
+
+class AirQualityLoadMatch(AirQualityLoadMatchRequired, total=False):
+    apikey: str
+    cell_selection: str
+    current: Any
+    domain: str
+    end_date: str
+    end_hour: str
+    forecast_day: int
+    forecast_hour: int
+    hourly: Any
+    past_day: int
+    past_hour: int
+    start_date: str
+    start_hour: str
+    timeformat: str
     timezone: str
-    timezone_abbreviation: str
-    utc_offset_seconds: int

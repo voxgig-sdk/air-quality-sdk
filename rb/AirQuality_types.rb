@@ -59,50 +59,74 @@ AirQuality = Struct.new(
 
 # Request payload for AirQuality#load.
 #
+# @!attribute [rw] apikey
+#   @return [String, nil]
+#
+# @!attribute [rw] cell_selection
+#   @return [String, nil]
+#
 # @!attribute [rw] current
-#   @return [Hash, nil]
+#   @return [Object, nil]
 #
-# @!attribute [rw] current_units
-#   @return [Hash, nil]
+# @!attribute [rw] domain
+#   @return [String, nil]
 #
-# @!attribute [rw] elevation
-#   @return [Float, nil]
+# @!attribute [rw] end_date
+#   @return [String, nil]
 #
-# @!attribute [rw] generationtime_ms
-#   @return [Float, nil]
+# @!attribute [rw] end_hour
+#   @return [String, nil]
+#
+# @!attribute [rw] forecast_day
+#   @return [Integer, nil]
+#
+# @!attribute [rw] forecast_hour
+#   @return [Integer, nil]
 #
 # @!attribute [rw] hourly
-#   @return [Hash, nil]
-#
-# @!attribute [rw] hourly_units
-#   @return [Hash, nil]
+#   @return [Object, nil]
 #
 # @!attribute [rw] latitude
-#   @return [Float, nil]
+#   @return [Float]
 #
 # @!attribute [rw] longitude
-#   @return [Float, nil]
+#   @return [Float]
+#
+# @!attribute [rw] past_day
+#   @return [Integer, nil]
+#
+# @!attribute [rw] past_hour
+#   @return [Integer, nil]
+#
+# @!attribute [rw] start_date
+#   @return [String, nil]
+#
+# @!attribute [rw] start_hour
+#   @return [String, nil]
+#
+# @!attribute [rw] timeformat
+#   @return [String, nil]
 #
 # @!attribute [rw] timezone
 #   @return [String, nil]
-#
-# @!attribute [rw] timezone_abbreviation
-#   @return [String, nil]
-#
-# @!attribute [rw] utc_offset_seconds
-#   @return [Integer, nil]
 AirQualityLoadMatch = Struct.new(
+  :apikey,
+  :cell_selection,
   :current,
-  :current_units,
-  :elevation,
-  :generationtime_ms,
+  :domain,
+  :end_date,
+  :end_hour,
+  :forecast_day,
+  :forecast_hour,
   :hourly,
-  :hourly_units,
   :latitude,
   :longitude,
+  :past_day,
+  :past_hour,
+  :start_date,
+  :start_hour,
+  :timeformat,
   :timezone,
-  :timezone_abbreviation,
-  :utc_offset_seconds,
   keyword_init: true
 )
 

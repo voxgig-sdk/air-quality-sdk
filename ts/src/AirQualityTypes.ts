@@ -20,16 +20,22 @@ export interface AirQuality {
 }
 
 export interface AirQualityLoadMatch {
-  current?: Record<string, any>
-  current_units?: Record<string, any>
-  elevation?: number
-  generationtime_ms?: number
-  hourly?: Record<string, any>
-  hourly_units?: Record<string, any>
-  latitude?: number
-  longitude?: number
+  apikey?: string
+  cell_selection?: string
+  current?: any
+  domain?: string
+  end_date?: string
+  end_hour?: string
+  forecast_day?: number
+  forecast_hour?: number
+  hourly?: any
+  latitude: number
+  longitude: number
+  past_day?: number
+  past_hour?: number
+  start_date?: string
+  start_hour?: string
+  timeformat?: string
   timezone?: string
-  timezone_abbreviation?: string
-  utc_offset_seconds?: number
 }
 

@@ -14,6 +14,10 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+> **Features:** `test` — opt-in,
+> inactive until switched on, and configured per client. See the Features
+> section of any SDK README below for what each one does.
+
 ## Entities, not endpoints
 
 This SDK exposes the API as a small set of **semantic entities** — AirQuality — that you
@@ -23,7 +27,7 @@ support (`load`):
 
 ```ts
 const client = new AirQualitySDK()
-const airquality = await client.AirQuality().load()
+const airquality = await client.AirQuality().load({ latitude: 1, longitude: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -47,7 +51,7 @@ const client = AirQualitySDK.test({
     },
   },
 })
-const airquality = await client.AirQuality().load()
+const airquality = await client.AirQuality().load({ latitude: 1, longitude: 1 })
 // airquality is the AirQuality entity, populated with mock data
 // — call airquality.data() for the record itself
 console.log(airquality)
@@ -57,7 +61,7 @@ console.log(airquality)
 
 ```python
 client = AirQualitySDK.test()
-airquality = client.AirQuality().load()
+airquality = client.AirQuality().load({"latitude": 1, "longitude": 1})
 print(airquality)
 ```
 
@@ -68,7 +72,7 @@ print(airquality)
 $client = AirQualitySDK::test([
     "entity" => ["airquality" => ["test01" => []]],
 ]);
-$airquality = $client->AirQuality()->load();
+$airquality = $client->AirQuality()->load(["latitude" => 1, "longitude" => 1]);
 ```
 
 ### Golang
@@ -87,14 +91,14 @@ result, err := client.AirQuality(nil).Load(
 client = AirQualitySDK.test({
   "entity" => { "airquality" => { "test01" => {} } },
 })
-airquality = client.AirQuality.load()
+airquality = client.AirQuality.load({ "latitude" => 1, "longitude" => 1 })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:AirQuality():load()
+local result, err = client:AirQuality():load({ latitude = 1, longitude = 1 })
 ```
 
 ## Packages
@@ -183,7 +187,7 @@ client = AirQualitySDK({
 
 
 # Load a specific airquality (returns the record, raises on error)
-airquality = client.AirQuality().load()
+airquality = client.AirQuality().load({"latitude": 1, "longitude": 1})
 print(airquality)
 ```
 
@@ -199,7 +203,7 @@ $client = new AirQualitySDK([
 
 
 // Load a specific airquality (returns the ENTITY; call data_get() for the record; throws on error)
-$airquality = $client->AirQuality()->load();
+$airquality = $client->AirQuality()->load(["latitude" => 1, "longitude" => 1]);
 print_r($airquality);
 ```
 
@@ -213,7 +217,7 @@ client := sdk.NewAirQualitySDK(map[string]any{
 })
 
 // Load airquality data
-airQuality, err := client.AirQuality(nil).Load(nil, nil)
+airQuality, err := client.AirQuality(nil).Load(map[string]any{"latitude": 1, "longitude": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -231,7 +235,7 @@ client = AirQualitySDK.new({
 
 
 # Load a specific airquality (returns the ENTITY; call data_get for the record)
-airquality = client.AirQuality.load()
+airquality = client.AirQuality.load({ "latitude" => 1, "longitude" => 1 })
 puts airquality
 ```
 
@@ -246,7 +250,7 @@ local client = sdk.new({
 
 
 -- Load a specific airquality
-local airquality, err = client:AirQuality():load()
+local airquality, err = client:AirQuality():load({ latitude = 1, longitude = 1 })
 print(airquality)
 ```
 
@@ -352,6 +356,32 @@ forking the SDK.
 | **TestFeature** | In-memory mock transport for testing without a live server |
 
 Pass custom features via the `extend` option at construction time.
+
+## Customizing this SDK
+
+This repository contains its own generator (`.sdk/`), so the SDK is
+customizable without forking any upstream tool:
+
+- **The model** (`.sdk/model/`) declares everything this project owns:
+  package names, versions, active features, per-target settings. It is
+  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  specification language designed for building ontologies: easy to edit
+  by hand, and files unify rather than override, so small declarations
+  compose into one model. Regeneration re-reads it every time.
+- **Templates** (`.sdk/tm/`) and **components** (`.sdk/src/cmp/`) are
+  the two layers of generation, copied into this repo: templates are the
+  literal per-language source, components generate the API-shaped parts.
+- **Regeneration merges.** By default, newly generated content is
+  three-way merged into existing files, so generator updates and local
+  edits usually converge without manual conflict handling. A project can
+  opt for plain overwrite instead.
+- **Custom features and entire custom targets** arrive through sdkgen
+  packages (`voxgig-sdkgen package add`), on the same rails as the
+  bundled languages, and `voxgig-sdkgen doctor` reports any drift from
+  what a resync would write.
+
+How-to: [customize and propagate templates](https://github.com/voxgig/sdkgen/blob/main/docs/how-to/customize-and-propagate-templates.md).
+The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 
 ## Per-language documentation
 

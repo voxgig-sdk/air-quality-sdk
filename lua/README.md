@@ -38,7 +38,7 @@ local client = sdk.new({
 ### 3. Load an airquality
 
 ```lua
-local airquality, err = client:AirQuality():load()
+local airquality, err = client:AirQuality():load({ latitude = 1, longitude = 1 })
 if err then error(err) end
 print(airquality)
 ```
@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local airquality, err = client:AirQuality():load()
+local airquality, err = client:AirQuality():load({ latitude = 1, longitude = 1 })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:AirQuality():load()
+local result, err = client:AirQuality():load({ latitude = 1, longitude = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -279,8 +279,31 @@ Create an instance: `local air_quality = client:AirQuality(nil)`
 #### Example: Load
 
 ```lua
-local air_quality, err = client:AirQuality():load()
+local air_quality, err = client:AirQuality():load({ latitude = 1, longitude = 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -360,7 +383,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local airquality = client:AirQuality()
-airquality:load()
+airquality:load({ latitude = 1, longitude = 1 })
 
 -- airquality:data_get() now returns the airquality data from the last load
 -- airquality:match_get() returns the last match criteria

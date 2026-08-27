@@ -31,16 +31,22 @@ class AirQuality
 /** Request payload for AirQuality#load. */
 class AirQualityLoadMatch
 {
-    public ?array $current = null;
-    public ?array $current_units = null;
-    public ?float $elevation = null;
-    public ?float $generationtime_ms = null;
-    public ?array $hourly = null;
-    public ?array $hourly_units = null;
-    public ?float $latitude = null;
-    public ?float $longitude = null;
+    public ?string $apikey = null;
+    public ?string $cell_selection = null;
+    public mixed $current = null;
+    public ?string $domain = null;
+    public ?string $end_date = null;
+    public ?string $end_hour = null;
+    public ?int $forecast_day = null;
+    public ?int $forecast_hour = null;
+    public mixed $hourly = null;
+    public float $latitude;
+    public float $longitude;
+    public ?int $past_day = null;
+    public ?int $past_hour = null;
+    public ?string $start_date = null;
+    public ?string $start_hour = null;
+    public ?string $timeformat = null;
     public ?string $timezone = null;
-    public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_seconds = null;
 }
 
